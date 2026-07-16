@@ -65,6 +65,8 @@ def fetch_play_store(config: dict, cutoff: datetime) -> pd.DataFrame:
         )
         if not batch:
             break
+        import time
+        time.sleep(0.05)  # Yield GIL for health checks
         for r in batch:
             at = r["at"]
             if at.tzinfo is None:

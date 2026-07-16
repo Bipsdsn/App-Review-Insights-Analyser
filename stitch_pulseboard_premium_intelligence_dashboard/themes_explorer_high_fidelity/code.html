@@ -185,7 +185,7 @@
 </head>
 <body class="bg-[#0B0B10] text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-[#7C3AED]/30 selection:text-white">
 <!-- SideNavBar -->
-<nav class="w-[240px] h-screen fixed left-0 top-0 bg-[#141420] border-r border-white/[0.06] flex flex-col p-gutter z-50">
+<nav class="hidden lg:flex w-[240px] h-screen fixed left-0 top-0 bg-[#141420] border-r border-white/[0.06] flex flex-col p-gutter z-50">
 <div class="mb-8">
 <h1 class="font-display-lg text-display-lg font-bold bg-gradient-to-r from-[#7C3AED] to-[#A78BFA] bg-clip-text text-transparent">PulseBoard</h1>
 <p class="font-metric-sm text-metric-sm text-on-surface-variant mt-1">Premium Intelligence</p>
@@ -225,7 +225,7 @@
 </div>
 </nav>
 <!-- TopNavBar -->
-<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-16 bg-[#0B0B10]/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-40 flex justify-between items-center px-gutter">
+<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-240px)] h-16 bg-[#0B0B10]/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-40 flex justify-between items-center px-gutter">
 <div class="flex items-center text-on-surface-variant font-body-md">
 <span class="hover:text-[#7C3AED] transition-colors cursor-pointer">Insights</span>
 <span class="mx-2 opacity-50">/</span>
@@ -236,7 +236,7 @@
 </div>
 </header>
 <!-- Main Content -->
-<main class="ml-[240px] pt-16 pb-12 min-h-screen">
+<main class="lg:ml-[240px] pt-16 pb-12 min-h-screen">
 <div class="p-section-padding max-w-container-max mx-auto">
 <!-- Header Section -->
 <div class="flex justify-between items-end mb-8">

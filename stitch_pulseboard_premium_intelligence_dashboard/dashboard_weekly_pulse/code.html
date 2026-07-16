@@ -212,7 +212,7 @@
 </head>
 <body class="text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- SideNavBar -->
-<nav class="w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-white/[0.06] flex flex-col h-full p-gutter z-40 flat no shadows">
+<nav class="hidden lg:flex w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-white/[0.06] flex flex-col h-full p-gutter z-40 flat no shadows">
 <div class="mb-8 px-2 flex items-center gap-3">
 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center">
 <span class="material-symbols-outlined text-on-primary-container text-[20px]">insights</span>
@@ -267,7 +267,7 @@
 </div>
 </nav>
 <!-- TopNavBar -->
-<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-30 flex justify-between items-center px-gutter">
+<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-240px)] h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-30 flex justify-between items-center px-gutter">
 <div class="flex items-center gap-2 font-body-md text-body-md text-sm">
 <span class="text-on-surface-variant">Insights</span>
 <span class="text-on-surface-variant text-xs">/</span>
@@ -289,7 +289,7 @@
 </div>
 </header>
 <!-- Main Content -->
-<main class="ml-[240px] pt-[88px] px-8 pb-24 min-h-screen">
+<main class="lg:ml-[240px] pt-[88px] px-8 pb-24 min-h-screen">
 <div class="max-w-container-max mx-auto space-y-6">
 <!-- Hero Row: Stat Cards -->
 <div class="grid grid-cols-4 gap-4">

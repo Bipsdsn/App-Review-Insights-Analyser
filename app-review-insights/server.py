@@ -14,7 +14,7 @@ from pathlib import Path
 
 import yaml
 from dotenv import load_dotenv
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, PlainTextResponse
 
@@ -112,7 +112,7 @@ def _run_pipeline() -> None:
 
 
 @app.post("/api/run")
-def trigger_run(x_run_token: str = Header(default="")):
+def trigger_run(background_tasks: BackgroundTasks, x_run_token: str = Header(default="")):
     """Trigger a full pipeline run (costs LLM quota — token protected)."""
     expected = os.environ.get("RUN_TOKEN")
     if not expected:
@@ -122,7 +122,7 @@ def trigger_run(x_run_token: str = Header(default="")):
     if _run_state["running"]:
         raise HTTPException(409, "A run is already in progress")
     _run_state["running"] = True
-    threading.Thread(target=_run_pipeline, daemon=True).start()
+    background_tasks.add_task(_run_pipeline)
     return {"started": True, "note": "Poll /api/run-status for completion"}
 
 
