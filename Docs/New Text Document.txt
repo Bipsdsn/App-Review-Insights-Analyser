@@ -1,0 +1,81 @@
+App Review Insights Analyser
+
+Submission deadline :
+Jul 17, 11:59:00 PM (Asia/Calcutta)
+Pick the same product you selected in the previous LIP challenge (4).
+
+Turn recent App Store + Play Store reviews into a one-page weekly pulse containing:
+
+Top themes
+
+Real user quotes
+
+Three action ideas
+
+Finally, send yourself a draft email containing this weekly note.
+
+👥 Who This Helps
+
+Product / Growth Teams → understand what to fix next
+
+Support Teams → know what users are saying & acknowledging
+
+Leadership → quick weekly health pulse
+
+🛠️ What You Must Build
+
+Import reviews from the last 8–12 weeks (rating, title, text, date)
+
+Group reviews into 5 themes max (e.g., onboarding, KYC, payments, statements, withdrawals)
+
+Generate a weekly one-page note:
+
+Top 3 themes
+
+3 user quotes
+
+3 action ideas
+
+Draft an email with the note (send to yourself/alias)
+
+Do NOT include PII
+
+⚠️ Key Constraints
+
+Use public review exports only — no scraping behind logins
+
+Max 5 themes
+
+Keep notes scannable, ≤250 words
+
+No usernames/emails/IDs in any artifacts
+
+📦 Deliverables
+
+Working prototype link or ≤3-min demo video
+
+Latest one-page weekly note (PDF/Doc/MD)
+
+Email draft (screenshot or text)
+
+Reviews CSV used (sample/redacted is fine)
+
+README:
+
+How to re-run for a new week
+
+Theme legend
+
+🧠 Skills Being Tested
+
+W2 — LLMs & Prompting
+
+Summarization
+
+Quote selection
+
+Tone control
+
+W3 — AI Workflow Automations
+
+Import → Group → Generate Note → Draft Email
