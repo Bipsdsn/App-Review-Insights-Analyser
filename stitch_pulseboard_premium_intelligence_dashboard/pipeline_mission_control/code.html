@@ -277,42 +277,10 @@
 <div class="w-2.5 h-2.5 rounded-full bg-outline-variant/30"></div>
 </div>
 </div>
-<div class="p-4 font-mono text-[13px] leading-relaxed overflow-y-auto flex-1 text-outline-variant space-y-1">
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:11</span>
-<span class="text-on-surface">Initializing Pipeline Run ID: pr_8f92a1</span>
-</div>
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:12</span>
-<span class="text-tertiary">[INFO] Data import started.</span>
-</div>
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:18</span>
-<span class="text-tertiary">[INFO] 2100/2100 records fetched successfully.</span>
-</div>
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:19</span>
-<span class="text-primary">[PROCESS] Theme classification engine engaged.</span>
-</div>
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:45</span>
-<span class="text-tertiary">[INFO] classified 2100/2100.</span>
-</div>
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:46</span>
-<span class="text-primary">[PROCESS] Theme counts written to ledger.</span>
-</div>
-<div class="flex gap-4">
-<span class="text-outline/50">14:02:50</span>
-<span class="text-[#FFC107]">[WARN] Token limit approaching for context window. Truncating lowest relevance items.</span>
-</div>
-<div class="flex gap-4 text-on-surface">
-<span class="text-outline/50">14:02:51</span>
-<span>[ACTIVE] Note generation started via llama-3.3-70b. Awaiting stream...</span>
-</div>
+<div id="liveLog" class="p-4 font-mono text-[13px] leading-relaxed overflow-y-auto flex-1 text-outline-variant space-y-1">
 <div class="flex gap-4 mt-2">
 <span class="text-outline/50"></span>
-<span><span class="blinking-cursor"></span></span>
+<span><span class="blinking-cursor"></span> Ready to start</span>
 </div>
 </div>
 </div>
@@ -367,8 +335,8 @@
 <button class="flex-1 py-2.5 rounded-lg border border-white/[0.1] text-on-surface-variant/50 text-sm font-medium cursor-not-allowed" disabled="">
                             Dry Run
                         </button>
-<button class="flex-[2] py-2.5 rounded-lg bg-surface-container-highest text-on-surface-variant/50 text-sm font-medium cursor-not-allowed relative overflow-hidden flex justify-center items-center gap-2" disabled="">
-<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> Running...
+<button id="runBtn" class="flex-[2] py-2.5 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container text-sm font-medium hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span> Run Pipeline
                         </button>
 </div>
 </div>
@@ -395,4 +363,79 @@
 </div>
 </div>
 </footer>
+<script>
+    const runBtn = document.getElementById('runBtn');
+    const liveLog = document.getElementById('liveLog');
+    const apiUrl = 'https://app-review-insights-analyser-hnib.onrender.com';
+    const token = 'kbcKmLDKQ4r96UdGfgAaHCt9D3nlH16dqtQmGwIoo1Q';
+
+    function addLog(msg, type='info') {
+        const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+        let colorClass = 'text-on-surface';
+        if (type === 'error') colorClass = 'text-error';
+        else if (type === 'success') colorClass = 'text-tertiary';
+        else if (type === 'warn') colorClass = 'text-[#FFC107]';
+        
+        liveLog.innerHTML += `
+            <div class="flex gap-4">
+                <span class="text-outline/50">${time}</span>
+                <span class="${colorClass}">${msg}</span>
+            </div>
+        `;
+        liveLog.scrollTop = liveLog.scrollHeight;
+    }
+
+    async function pollStatus() {
+        try {
+            const res = await fetch(`${apiUrl}/api/run-status`);
+            const data = await res.json();
+            if (data.running) {
+                addLog('[POLL] Pipeline is still running... (Classification takes ~10 mins)', 'warn');
+                setTimeout(pollStatus, 15000);
+            } else {
+                if (data.last_error) {
+                    addLog(`[ERROR] Pipeline failed: ${data.last_error}`, 'error');
+                } else {
+                    addLog('[SUCCESS] Pipeline completed successfully!', 'success');
+                    addLog('All dashboards have been updated. You can check the other tabs.', 'success');
+                }
+                runBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Completed';
+            }
+        } catch (e) {
+            addLog(`[ERROR] Status check failed: ${e.message}`, 'error');
+            setTimeout(pollStatus, 15000);
+        }
+    }
+
+    runBtn.addEventListener('click', async () => {
+        runBtn.disabled = true;
+        runBtn.className = "flex-[2] py-2.5 rounded-lg bg-surface-container-highest text-on-surface-variant/50 text-sm font-medium cursor-not-allowed relative overflow-hidden flex justify-center items-center gap-2";
+        runBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> Running...';
+        liveLog.innerHTML = '';
+        addLog('Initializing Pipeline Run...', 'info');
+        addLog('Connecting to backend API on Render...', 'info');
+
+        try {
+            const res = await fetch(`${apiUrl}/api/run`, {
+                method: 'POST',
+                headers: {
+                    'X-Run-Token': token
+                }
+            });
+            
+            if (res.ok) {
+                addLog('[SUCCESS] Run triggered. Pipeline started in the background.', 'success');
+                setTimeout(pollStatus, 5000);
+            } else if (res.status === 409) {
+                addLog('[WARN] A run is already in progress.', 'warn');
+                setTimeout(pollStatus, 5000);
+            } else {
+                const data = await res.json();
+                addLog(`[ERROR] Failed to start run: ${data.detail}`, 'error');
+            }
+        } catch (e) {
+            addLog(`[ERROR] Network error: ${e.message}`, 'error');
+        }
+    });
+</script>
 </body></html>
