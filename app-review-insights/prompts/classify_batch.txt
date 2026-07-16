@@ -1,0 +1,18 @@
+Classify each app review below into EXACTLY ONE theme from this legend.
+
+Theme legend:
+{legend}
+
+Rules:
+- Use the theme NAME exactly as written in the legend — no variations.
+- If a review mentions multiple issues, choose the DOMINANT one.
+- A review naming a SPECIFIC topic (payments, KYC, UI, speed, notifications)
+  goes to that topic's theme. Only generic praise/complaints with no specific
+  topic ("good app", "super", "worst") go to the general sentiment theme.
+- Every review_id in the input must appear in your output exactly once.
+
+Return ONLY this JSON, nothing else:
+{{"<review_id>": "<theme name>", ...}}
+
+Reviews (review_id | rating | text):
+{reviews_batch}

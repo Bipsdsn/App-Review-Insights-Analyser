@@ -1,0 +1,21 @@
+You are analyzing app store reviews for PhonePe, a UPI payments app in India.
+
+Below is a sample of recent user reviews. Propose AT MOST {max_themes} themes
+that best group the issues and topics users raise.
+
+Rules:
+- Themes must be TOPIC-based (e.g., "KYC / Verification", "Payment Failures"),
+  never sentiment-based (not "Good experience" / "Bad experience").
+- EXCEPTION: many reviews are short generic praise or complaints with no
+  specific topic ("good app", "nice", "worst app"). Include ONE theme named
+  "General Praise & Sentiment" to absorb these, so the topic themes stay
+  clean and meaningful.
+- Themes must be mutually exclusive — no overlapping definitions.
+- Each theme needs a one-line definition a product manager could act on.
+- Cover the dominant topics in the sample; avoid niche one-off issues.
+
+Return ONLY this JSON, nothing else:
+{{"themes": [{{"name": "<short name>", "definition": "<one line>"}}]}}
+
+Review sample (rating | text):
+{reviews_sample}

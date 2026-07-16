@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PulseBoard - Email Draft</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#45dfa4",
+                      "error": "#ffb4ab",
+                      "surface-variant": "#35343a",
+                      "on-secondary-container": "#bea8ff",
+                      "primary-fixed-dim": "#d2bbff",
+                      "tertiary": "#45dfa4",
+                      "surface-tint": "#d2bbff",
+                      "error-container": "#93000a",
+                      "secondary-container": "#4f319c",
+                      "on-primary": "#3f008e",
+                      "on-tertiary-fixed-variant": "#005137",
+                      "on-background": "#e4e1e9",
+                      "primary-container": "#7c3aed",
+                      "surface-container-highest": "#35343a",
+                      "outline-variant": "#4a4455",
+                      "on-primary-container": "#ede0ff",
+                      "surface-dim": "#131318",
+                      "on-tertiary-container": "#6bffc1",
+                      "on-tertiary-fixed": "#002114",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "secondary-fixed-dim": "#cebdff",
+                      "on-secondary-fixed-variant": "#4f319c",
+                      "surface-container-high": "#2a292f",
+                      "outline": "#958da1",
+                      "on-surface-variant": "#ccc3d8",
+                      "inverse-surface": "#e4e1e9",
+                      "inverse-on-surface": "#303036",
+                      "primary-fixed": "#eaddff",
+                      "tertiary-container": "#007551",
+                      "on-primary-fixed": "#25005a",
+                      "secondary-fixed": "#e8ddff",
+                      "tertiary-fixed": "#68fcbf",
+                      "primary": "#d2bbff",
+                      "secondary": "#cebdff",
+                      "on-surface": "#e4e1e9",
+                      "background": "#131318",
+                      "inverse-primary": "#732ee4",
+                      "surface-container": "#1f1f24",
+                      "surface-container-low": "#1b1b20",
+                      "on-secondary-fixed": "#21005e",
+                      "surface-container-lowest": "#0e0e13",
+                      "on-tertiary": "#003825",
+                      "on-secondary": "#381385",
+                      "surface-bright": "#39383e",
+                      "surface": "#131318",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "section-padding": "32px",
+                      "base-grid": "8px",
+                      "container-max": "1440px",
+                      "card-padding": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "metric-xl": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Inter"
+                      ],
+                      "metric-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "15px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "metric-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "metric-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0B0B10; /* Dark luxe theme override */
+        }
+        .inner-border {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        .gradient-border {
+            position: relative;
+            background: #131318;
+            background-clip: padding-box;
+            border: 1px solid transparent;
+            border-radius: 0.5rem;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -1px;
+            border-radius: inherit;
+            background: linear-gradient(to right, #7c3aed, #4f319c);
+        }
+    </style>
+</head>
+<body class="text-on-background font-body-md antialiased overflow-x-hidden min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 right-0 w-[calc(100%-240px)] h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm flex justify-between items-center px-gutter z-40">
+<div class="flex items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors focus-within:ring-2 focus-within:ring-primary/40 cursor-pointer">Breadcrumbs</span>
+<span class="material-symbols-outlined text-outline mx-2" style="font-size: 16px;">chevron_right</span>
+<span class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary pb-1">Email Draft</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative focus-within:ring-2 focus-within:ring-primary/40 rounded-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 18px;">search</span>
+<input class="bg-white/5 border border-white/10 rounded-lg pl-9 pr-4 py-1.5 text-sm focus:outline-none focus:border-primary text-on-surface w-64 placeholder:text-outline transition-colors" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-label-caps text-label-caps px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+                Create New
+            </button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-white/[0.06] flex flex-col p-gutter z-50">
+<div class="mb-8 mt-2 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center inner-border">
+<span class="material-symbols-outlined text-on-primary-container" style="font-size: 18px;">auto_awesome</span>
+</div>
+<div>
+<h1 class="font-display-lg text-display-lg font-bold bg-gradient-to-r from-primary to-tertiary bg-clip-text text-transparent" style="font-size: 20px; line-height: 24px; letter-spacing: 0;">PulseBoard</h1>
+<p class="font-label-caps text-label-caps text-outline" style="font-size: 10px;">Premium Intelligence</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2 font-body-md text-body-md text-primary dark:text-primary">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg transition-all duration-200 active:scale-95" href="../dashboard_weekly_pulse/code.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg transition-all duration-200 active:scale-95" href="../themes_explorer_high_fidelity/code.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Themes
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg transition-all duration-200 active:scale-95" href="../reviews_explorer/code.html">
+<span class="material-symbols-outlined" data-icon="rate_review">rate_review</span>
+                Reviews
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg transition-all duration-200 active:scale-95" href="../weekly_note_report/code.html">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+                Weekly Note
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-semibold transition-all duration-200 active:scale-95" href="../email_draft_preview/code.html">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+                Email Draft
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg transition-all duration-200 active:scale-95" href="../pipeline_mission_control/code.html">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                Run Pipeline
+            </a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-3 rounded-lg border border-white/[0.1] text-on-surface font-label-caps text-label-caps hover:bg-white/[0.04] transition-colors inner-border flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">bolt</span>
+                Upgrade to Pro
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] mt-16 p-section-padding min-h-[calc(100vh-64px)] flex gap-6">
+<!-- Center-Left: Email preview card -->
+<div class="flex-1 flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-display-lg text-display-lg text-on-surface">Weekly Briefing Ready</h2>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container">DRAFT</span>
+<span class="px-2 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-tertiary/10 text-tertiary">never auto-sent</span>
+</div>
+</div>
+<!-- Email Header Block -->
+<div class="bg-[#22222E] rounded-t-xl p-card-padding inner-border font-mono text-sm border-b border-white/[0.06]">
+<div class="grid grid-cols-[80px_1fr] gap-y-3 items-center text-outline">
+<div>To:</div>
+<div class="text-on-surface bg-black/20 px-3 py-1.5 rounded inner-border inline-block w-fit">bipsdsn@gmail.com</div>
+<div>From:</div>
+<div class="text-on-surface bg-black/20 px-3 py-1.5 rounded inner-border inline-block w-fit">bipsdsn@gmail.com</div>
+<div>Subject:</div>
+<div class="text-primary font-medium">Weekly App Review Pulse — 2026-07-16</div>
+</div>
+</div>
+<!-- Email Body Panel -->
+<div class="bg-[#FDFDFB] text-surface-container-lowest rounded-b-xl p-card-padding flex-1 shadow-lg overflow-y-auto">
+<div class="max-w-3xl mx-auto font-serif space-y-6">
+<h1 class="text-2xl font-bold border-b border-gray-200 pb-4">Weekly App Review Pulse — week ending 2026-07-16</h1>
+<p class="text-gray-700"><strong>2100 reviews analyzed</strong> (Play Store + App Store, last 10 weeks)</p>
+<h3 class="text-lg font-semibold text-gray-900 mt-8">Top 3 Themes</h3>
+<ul class="list-disc pl-5 space-y-2 text-gray-700">
+<li><strong>App Performance &amp; Compatibility</strong>: 117 reviews, avg 2.84 stars — users are experiencing issues with the app's performance and compatibility.</li>
+<li><strong>Features &amp; Usability</strong>: 105 reviews, avg 4.37 stars — users are praising the app's features and usability.</li>
+<li><strong>Payment Failures</strong>: 64 reviews, avg 2.53 stars — users are reporting issues with payment failures.</li>
+</ul>
+<h3 class="text-lg font-semibold text-gray-900 mt-8">What Users Are Saying</h3>
+<div class="space-y-3">
+<blockquote class="italic text-gray-500 border-l-4 border-primary/40 pl-4">"Its always easy to operate and no lag problems during transactions, much simpler interface so that even my not so tech oriented mom can also easily operate it without my help." <span class="not-italic text-gray-400 text-sm">[App Performance &amp; Compatibility]</span></blockquote>
+<blockquote class="italic text-gray-500 border-l-4 border-primary/40 pl-4">"Among all the UPI apps I have tried, PhonePe is literally the best. Highly recommended. The UI, the support, the ease, everything is perfect." <span class="not-italic text-gray-400 text-sm">[Features &amp; Usability]</span></blockquote>
+<blockquote class="italic text-gray-500 border-l-4 border-primary/40 pl-4">"fraud app, this app has deducted 301 rupees without my interaction. Seems it is deducting crores of rupees simply by just creating an app. The government should investigate and ban." <span class="not-italic text-gray-400 text-sm">[Payment Failures]</span></blockquote>
+</div>
+<div class="bg-gray-100 p-4 rounded-lg mt-8">
+<h4 class="font-bold text-gray-900 mb-2">Recommended Actions</h4>
+<ol class="list-decimal pl-5 text-gray-700 space-y-1">
+<li>Optimize the app's performance and compatibility to improve user experience and address the 117 reviews with an average rating of 2.84 stars.</li>
+<li>Enhance the features and usability of the app to build on the positive feedback from 105 reviews with an average rating of 4.37 stars.</li>
+<li>Investigate and resolve the payment failure issues reported by 64 users with an average rating of 2.53 stars to prevent financial losses and reputational damage.</li>
+</ol>
+</div>
+<p class="text-sm text-gray-500 mt-12 pt-4 border-t border-gray-200">Generated by PulseBoard AI Pipeline · draft only, never auto-sent</p>
+</div>
+</div>
+</div>
+<!-- Right Rail (320px) -->
+<aside class="w-[320px] flex flex-col gap-6">
+<!-- DELIVERY card -->
+<div class="bg-surface-container rounded-xl p-card-padding inner-border">
+<h3 class="font-label-caps text-label-caps text-outline mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">send</span>
+                    Delivery Method
+                </h3>
+<div class="space-y-3 mb-6">
+<label class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-primary/30 cursor-pointer">
+<input checked="" class="form-radio text-primary focus:ring-primary bg-transparent border-outline" name="delivery" type="radio"/>
+<span class="font-body-md text-on-surface">.eml file</span>
+<span class="material-symbols-outlined ml-auto text-primary" style="font-size: 18px;">check_circle</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg bg-black/20 border border-white/5 opacity-50 cursor-not-allowed">
+<input class="form-radio text-outline focus:ring-transparent bg-transparent border-outline/30" disabled="" name="delivery" type="radio"/>
+<span class="font-body-md text-outline">Gmail draft</span>
+<span class="material-symbols-outlined ml-auto text-outline" style="font-size: 18px;">lock</span>
+</label>
+</div>
+<div class="space-y-3">
+<button class="w-full py-2.5 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-metric-sm text-metric-sm font-semibold hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                        Download .eml
+                    </button>
+<button class="w-full py-2.5 rounded-lg border border-white/[0.1] text-on-surface font-metric-sm text-metric-sm hover:bg-white/[0.04] transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">refresh</span>
+                        Regenerate
+                    </button>
+</div>
+</div>
+<!-- EVIDENCE CHECKLIST card -->
+<div class="bg-surface-container rounded-xl p-card-padding gradient-border">
+<h3 class="font-label-caps text-label-caps text-outline mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">verified</span>
+                    Evidence Checklist
+                </h3>
+<ul class="space-y-3 font-body-md text-sm text-on-surface-variant mb-6">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary shrink-0" style="font-size: 18px;">check_circle</span>
+                        Draft addressed to self
+                    </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary shrink-0" style="font-size: 18px;">check_circle</span>
+                        Note embedded
+                    </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary shrink-0" style="font-size: 18px;">check_circle</span>
+                        UTF-8 verified
+                    </li>
+</ul>
+<div class="bg-tertiary/10 border border-tertiary/20 rounded-lg p-3">
+<p class="text-xs text-tertiary-fixed-dim font-medium text-center">Screenshot this draft for Deliverable 3</p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-240px)] h-12 bg-surface-container/50 dark:bg-surface-container/50 backdrop-blur-md border-t border-white/[0.04] flex justify-between items-center px-gutter z-40">
+<span class="font-metric-sm text-metric-sm text-outline">PulseBoard Intelligence © 2026</span>
+<div class="flex gap-4 font-metric-sm text-metric-sm">
+<a class="text-outline hover:text-on-surface transition-opacity duration-300" href="#">Metadata</a>
+<a class="text-outline hover:text-on-surface transition-opacity duration-300" href="#">Quotas</a>
+<a class="text-outline hover:text-on-surface transition-opacity duration-300" href="#">API Status</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reviews Explorer - PulseBoard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#45dfa4",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#35343a",
+                        "on-secondary-container": "#bea8ff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "tertiary": "#45dfa4",
+                        "surface-tint": "#d2bbff",
+                        "error-container": "#93000a",
+                        "secondary-container": "#4f319c",
+                        "on-primary": "#3f008e",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "on-background": "#e4e1e9",
+                        "primary-container": "#7c3aed",
+                        "surface-container-highest": "#35343a",
+                        "outline-variant": "#4a4455",
+                        "on-primary-container": "#ede0ff",
+                        "surface-dim": "#131318",
+                        "on-tertiary-container": "#6bffc1",
+                        "on-tertiary-fixed": "#002114",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "secondary-fixed-dim": "#cebdff",
+                        "on-secondary-fixed-variant": "#4f319c",
+                        "surface-container-high": "#2a292f",
+                        "outline": "#958da1",
+                        "on-surface-variant": "#ccc3d8",
+                        "inverse-surface": "#e4e1e9",
+                        "inverse-on-surface": "#303036",
+                        "primary-fixed": "#eaddff",
+                        "tertiary-container": "#007551",
+                        "on-primary-fixed": "#25005a",
+                        "secondary-fixed": "#e8ddff",
+                        "tertiary-fixed": "#68fcbf",
+                        "primary": "#d2bbff",
+                        "secondary": "#cebdff",
+                        "on-surface": "#e4e1e9",
+                        "background": "#131318",
+                        "inverse-primary": "#732ee4",
+                        "surface-container": "#1f1f24",
+                        "surface-container-low": "#1b1b20",
+                        "on-secondary-fixed": "#21005e",
+                        "surface-container-lowest": "#0e0e13",
+                        "on-tertiary": "#003825",
+                        "on-secondary": "#381385",
+                        "surface-bright": "#39383e",
+                        "surface": "#131318",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "section-padding": "32px",
+                        "base-grid": "8px",
+                        "container-max": "1440px",
+                        "card-padding": "24px"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "metric-xl": ["Inter", "sans-serif"],
+                        "display-lg-mobile": ["Inter", "sans-serif"],
+                        "metric-sm": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.08em", fontWeight: "600" }],
+                        "display-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+                        "metric-xl": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                        "display-lg-mobile": ["24px", { lineHeight: "30px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "metric-sm": ["14px", { lineHeight: "20px", fontWeight: "500" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body { background-color: #0B0B10; }
+        .glass-panel {
+            background: rgba(26, 26, 40, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .glow-mint { box-shadow: 0 0 12px rgba(69, 223, 164, 0.3); }
+        .glow-purple { box-shadow: 0 0 12px rgba(124, 58, 237, 0.3); }
+        .table-row-hover:hover {
+            background-color: rgba(255, 255, 255, 0.04);
+            border-color: rgba(124, 58, 237, 0.4);
+        }
+        .bg-gradient-signature { background: linear-gradient(135deg, #7c3aed 0%, #d2bbff 100%); }
+    </style>
+</head>
+<body class="text-on-background font-body-md antialiased min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-white/[0.06] flex flex-col p-gutter z-50">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-gradient-signature flex items-center justify-center shadow-lg glow-purple">
+<span class="material-symbols-outlined text-white text-xl" data-weight="fill">analytics</span>
+</div>
+<div>
+<h1 class="font-display-lg text-display-lg font-bold bg-gradient-to-r from-primary to-tertiary bg-clip-text text-transparent leading-tight text-xl">PulseBoard</h1>
+<p class="font-label-caps text-label-caps text-outline text-[10px]">Premium Intelligence</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg" href="../dashboard_weekly_pulse/code.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg" href="../themes_explorer_high_fidelity/code.html">
+<span class="material-symbols-outlined">analytics</span>
+<span>Themes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-semibold" href="../reviews_explorer/code.html">
+<span class="material-symbols-outlined" data-weight="fill">rate_review</span>
+<span>Reviews</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg" href="../weekly_note_report/code.html">
+<span class="material-symbols-outlined">event_note</span>
+<span>Weekly Note</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg" href="../email_draft_preview/code.html">
+<span class="material-symbols-outlined">mail</span>
+<span>Email Draft</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-colors hover:bg-white/[0.04] rounded-lg" href="../pipeline_mission_control/code.html">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span>Run Pipeline</span>
+</a>
+</div>
+<div class="mt-auto">
+<button class="w-full py-3 rounded-lg bg-white/[0.04] border border-white/[0.1] text-primary font-metric-sm text-metric-sm hover:bg-white/[0.08] transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">upgrade</span>
+                Upgrade to Pro
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar area integrated into page header -->
+<header class="sticky top-0 z-40 bg-[#0B0B10]/80 backdrop-blur-3xl border-b border-white/[0.06] px-section-padding py-6 flex items-start justify-between">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4">
+<h2 class="font-display-lg text-display-lg text-on-background">Reviews</h2>
+<div class="px-2.5 py-1 rounded-full bg-tertiary-container/20 border border-tertiary-fixed/30 flex items-center gap-1.5 glow-mint">
+<span class="material-symbols-outlined text-tertiary-fixed text-[14px]">shield_lock</span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed text-[10px]">PII SCRUBBED</span>
+</div>
+</div>
+<p class="font-metric-sm text-metric-sm text-outline">2,100 reviews · hashed IDs</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="bg-surface-container-low border border-white/[0.06] rounded-lg pl-10 pr-4 py-2 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/40 transition-all w-64 placeholder:text-outline-variant" placeholder="Search reviews (⌘F)" type="text"/>
+</div>
+<button class="px-4 py-2 rounded-lg border border-white/[0.1] text-secondary font-metric-sm text-metric-sm hover:bg-white/[0.04] transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export CSV
+                </button>
+</div>
+</header>
+<div class="p-section-padding flex-1 flex flex-col gap-6">
+<!-- Filter Bar -->
+<div class="flex items-center gap-3 flex-wrap">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-white/[0.06] text-sm text-on-surface-variant hover:text-on-surface flex items-center gap-2">
+                    All stores <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-white/[0.06] text-sm text-on-surface-variant hover:text-on-surface flex items-center gap-2">
+                    All themes <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-white/[0.06] text-sm text-error/80 hover:text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container border border-white/[0.06] text-sm text-on-surface-variant hover:text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Last 7 Days
+                </button>
+<div class="w-[1px] h-6 bg-white/[0.06] mx-1"></div>
+<button class="px-3 py-1.5 rounded-full bg-gradient-to-r from-error-container/40 to-surface-container border border-error/30 text-sm text-on-surface flex items-center gap-2 shadow-[0_0_8px_rgba(255,180,171,0.1)]">
+                    Payment Failures <span class="material-symbols-outlined text-[14px] hover:text-error cursor-pointer">close</span>
+</button>
+</div>
+<!-- Data Table Card -->
+<div class="glass-panel rounded-xl overflow-hidden flex-1 flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/[0.06] bg-surface-container-lowest/50 font-label-caps text-label-caps text-outline-variant">
+<th class="py-4 px-6 font-semibold w-1/2">REVIEW</th>
+<th class="py-4 px-6 font-semibold">STORE</th>
+<th class="py-4 px-6 font-semibold">RATING</th>
+<th class="py-4 px-6 font-semibold">THEME</th>
+<th class="py-4 px-6 font-semibold text-right">DATE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/[0.04]">
+<!-- Row 1 -->
+<tr class="table-row-hover transition-colors group cursor-pointer">
+<td class="py-4 px-6 text-on-surface pr-8">
+<p class="truncate max-w-xl group-hover:text-primary-fixed transition-colors">"Payment stuck for 3 days and support is unresponsive. Terrible experience..."</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#000000] border border-white/[0.1] text-xs text-white">
+<span class="material-symbols-outlined text-[14px]">play_arrow</span> Play
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex text-error">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex px-2 py-1 rounded bg-error-container/20 border border-error/20 text-xs text-error">Payment Failures</span>
+</td>
+<td class="py-4 px-6 text-right text-outline text-sm font-mono">Jul 15</td>
+</tr>
+<!-- Row 2 -->
+<tr class="table-row-hover transition-colors group cursor-pointer">
+<td class="py-4 px-6 text-on-surface pr-8">
+<p class="truncate max-w-xl group-hover:text-primary-fixed transition-colors">"Best UPI app out there. Lightning fast and interface is super clean."</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#000000] border border-white/[0.1] text-xs text-white">
+<span class="material-symbols-outlined text-[14px]">play_arrow</span> Play
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex px-2 py-1 rounded bg-secondary-container/20 border border-secondary/20 text-xs text-secondary">General Praise</span>
+</td>
+<td class="py-4 px-6 text-right text-outline text-sm font-mono">Jul 15</td>
+</tr>
+<!-- Row 3 -->
+<tr class="table-row-hover transition-colors group cursor-pointer">
+<td class="py-4 px-6 text-on-surface pr-8">
+<p class="truncate max-w-xl group-hover:text-primary-fixed transition-colors">"App crashes on Android 12 whenever I try to open the scan QR feature."</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#000000] border border-white/[0.1] text-xs text-white">
+<span class="material-symbols-outlined text-[14px]">play_arrow</span> Play
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex text-error">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex px-2 py-1 rounded bg-surface-variant border border-outline-variant text-xs text-on-surface-variant">App Performance</span>
+</td>
+<td class="py-4 px-6 text-right text-outline text-sm font-mono">Jul 14</td>
+</tr>
+<!-- Row 4 -->
+<tr class="table-row-hover transition-colors group cursor-pointer">
+<td class="py-4 px-6 text-on-surface pr-8">
+<p class="truncate max-w-xl group-hover:text-primary-fixed transition-colors">"Please add a dark mode. The white screen is blinding at night."</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-white border border-white/[0.1] text-xs text-black">
+<span class="material-symbols-outlined text-[14px]">phone_iphone</span> Apple
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex px-2 py-1 rounded bg-primary-container/20 border border-primary/20 text-xs text-primary">Features &amp; Usability</span>
+</td>
+<td class="py-4 px-6 text-right text-outline text-sm font-mono">Jul 14</td>
+</tr>
+<!-- Row 5 -->
+<tr class="table-row-hover transition-colors group cursor-pointer">
+<td class="py-4 px-6 text-on-surface pr-8">
+<p class="truncate max-w-xl group-hover:text-primary-fixed transition-colors">"Contacted support at <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-highest border border-white/[0.1] text-[10px] text-outline-variant mx-1"><span class="material-symbols-outlined text-[12px]">security</span> REDACTED</span> but no one replied."</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#000000] border border-white/[0.1] text-xs text-white">
+<span class="material-symbols-outlined text-[14px]">play_arrow</span> Play
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex text-error">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex px-2 py-1 rounded bg-error-container/20 border border-error/20 text-xs text-error">Payment Failures</span>
+</td>
+<td class="py-4 px-6 text-right text-outline text-sm font-mono">Jul 13</td>
+</tr>
+<!-- Row 6 -->
+<tr class="table-row-hover transition-colors group cursor-pointer">
+<td class="py-4 px-6 text-on-surface pr-8">
+<p class="truncate max-w-xl group-hover:text-primary-fixed transition-colors">"Worried about data sharing policies mentioned in the new update terms."</p>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-white border border-white/[0.1] text-xs text-black">
+<span class="material-symbols-outlined text-[14px]">phone_iphone</span> Apple
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex text-error">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">star</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex px-2 py-1 rounded bg-outline-variant/30 border border-outline-variant/50 text-xs text-outline">Data Security</span>
+</td>
+<td class="py-4 px-6 text-right text-outline text-sm font-mono">Jul 12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-4 border-t border-white/[0.06] bg-surface-container-lowest/30 flex items-center justify-between mt-auto">
+<span class="text-sm text-outline-variant">Showing <span class="text-on-surface">1–25</span> of 2,100</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded bg-surface-container border border-white/[0.06] flex items-center justify-center text-outline hover:text-on-surface disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-surface-container border border-white/[0.06] flex items-center justify-center text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

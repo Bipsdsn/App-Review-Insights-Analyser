@@ -1,0 +1,25 @@
+# Secrets
+.env
+
+# Data (full CSVs stay local; sample_reviews.csv is the shippable exception)
+app-review-insights/data/raw/
+app-review-insights/data/*.csv
+!app-review-insights/data/sample_reviews.csv
+
+# Generated pipeline outputs (latest note is in the repo via sample)
+app-review-insights/output/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

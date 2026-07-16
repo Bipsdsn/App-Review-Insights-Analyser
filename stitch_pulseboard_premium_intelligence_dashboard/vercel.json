@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/dashboard", "destination": "/dashboard_weekly_pulse/code.html" },
+    { "source": "/themes", "destination": "/themes_explorer_high_fidelity/code.html" },
+    { "source": "/reviews", "destination": "/reviews_explorer/code.html" },
+    { "source": "/note", "destination": "/weekly_note_report/code.html" },
+    { "source": "/email", "destination": "/email_draft_preview/code.html" },
+    { "source": "/pipeline", "destination": "/pipeline_mission_control/code.html" }
+  ]
+}

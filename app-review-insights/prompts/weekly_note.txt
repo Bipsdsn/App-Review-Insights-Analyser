@@ -1,0 +1,31 @@
+Write a weekly app review pulse note for PhonePe leadership.
+
+HARD RULES:
+- 250 words MAXIMUM. Count carefully. Scannable: headers, bullets, no paragraph over 2 sentences.
+- Neutral, factual, leadership-ready tone. No hype, no blame. Numbers over adjectives.
+- Copy every statistic EXACTLY from the stats block below. Do not invent or recompute numbers.
+- Quotes: pick EXACTLY 3 from the quote pool below. Copy them WORD-FOR-WORD, no edits,
+  no translation, no attribution. Put each in italics with quotation marks, tagged with its theme.
+- Actions: EXACTLY 3, numbered, concrete, each tied to one of the top themes, ordered by impact.
+
+STRUCTURE (follow exactly):
+# Weekly App Review Pulse — week ending {week_ending}
+
+**{total_reviews} reviews analyzed** (Play Store + App Store, last {window_weeks} weeks)
+
+## Top 3 Themes
+(one bullet per theme: name, review count, avg rating, one-line summary{wow_hint})
+
+## What Users Are Saying
+(3 quotes from the pool, each tagged [Theme])
+
+## Recommended Actions
+(3 numbered action ideas)
+
+Stats block (copy numbers verbatim):
+{stats}
+
+Quote pool (choose 3, copy word-for-word):
+{quote_pool}
+
+Return ONLY the note markdown, starting with the # heading. No preamble.

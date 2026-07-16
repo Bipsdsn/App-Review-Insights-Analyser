@@ -1,0 +1,20 @@
+# App Review Insights Analyser — configuration
+# Tunables only. Secrets (GROQ_API_KEY) live in .env — never here.
+
+app:
+  # PhonePe (LIP challenge 4 product)
+  play_store_id: "com.phonepe.app"      # Play Store package name
+  app_store_id: "1170055821"            # App Store numeric ID
+  country: "in"
+
+window_weeks: 10        # must be 8-12 (challenge constraint)
+max_themes: 5           # hard cap per challenge brief
+
+llm:
+  provider: "groq"      # groq | gemini | ollama
+  model: "llama-3.3-70b-versatile"   # quality-critical calls (discovery, weekly note)
+  model_fast: "llama-3.1-8b-instant" # high-volume classification (separate daily quota)
+
+email:
+  mode: "eml"           # eml | gmail
+  to: "bipsdsn@gmail.com" # draft is addressed to self

@@ -1,0 +1,17 @@
+# Secrets
+.env
+
+# Data (pre- and post-scrub datasets stay local; sample_reviews.csv is the shippable exception)
+data/raw/
+data/*.csv
+!data/sample_reviews.csv
+
+# Generated artifacts (latest submitted note is copied out manually)
+output/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
