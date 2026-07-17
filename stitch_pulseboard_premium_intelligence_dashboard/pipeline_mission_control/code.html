@@ -385,6 +385,54 @@
         liveLog.scrollTop = liveLog.scrollHeight;
     }
 
+    
+    function completePipelineUI() {
+        const processingBadge = document.querySelector('.bg-surface-container-low.rounded-full');
+        if(processingBadge) {
+            processingBadge.innerHTML = '<span class="material-symbols-outlined text-primary text-[14px]">check_circle</span><span class="font-mono text-xs text-primary uppercase tracking-wider">Completed</span>';
+        }
+
+        const progressBar = document.querySelector('.h-full.w-\\[65\\%\\].bg-gradient-to-r');
+        if(progressBar) {
+            progressBar.className = 'h-full w-[100%] bg-gradient-to-r from-tertiary to-primary relative transition-all duration-1000';
+        }
+
+        const stage3 = document.querySelector('.w-40');
+        if(stage3) {
+            stage3.innerHTML = 
+            <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-tertiary/30 flex items-center justify-center z-10 relative">
+            <span class="material-symbols-outlined text-tertiary text-sm">check</span>
+            </div>
+            <div class="text-center">
+            <p class="font-label-caps text-label-caps text-on-surface">Generate Note</p>
+            <p class="text-[11px] text-on-surface-variant mt-1">Completed</p>
+            </div>;
+            stage3.className = 'flex flex-col items-center gap-3 w-32';
+        }
+
+        const stage4 = document.querySelector('.opacity-50');
+        if(stage4) {
+            stage4.innerHTML = 
+            <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-tertiary/30 flex items-center justify-center z-10 relative">
+            <span class="material-symbols-outlined text-tertiary text-sm">check</span>
+            </div>
+            <div class="text-center">
+            <p class="font-label-caps text-label-caps text-on-surface">Draft Email</p>
+            <p class="text-[11px] text-on-surface-variant mt-1">Completed</p>
+            </div>;
+            stage4.className = 'flex flex-col items-center gap-3 w-32 transition-opacity duration-1000';
+        }
+
+        const textElements = document.querySelectorAll('.text-sm.font-mono');
+        textElements.forEach(el => {
+            if(el.textContent.includes('Overall Progress: 65%')) el.innerHTML = 'Overall Progress: 100%';
+            if(el.textContent.includes('~40s remaining')) {
+                el.innerHTML = 'Completed successfully';
+                el.className = 'text-tertiary';
+            }
+        });
+    }
+
     async function pollStatus() {
         try {
             const res = await fetch(`${apiUrl}/api/run-status`);
@@ -396,6 +444,7 @@
                 if (data.last_error) {
                     addLog(`[ERROR] Pipeline failed: ${data.last_error}`, 'error');
                 } else {
+                    completePipelineUI();
                     addLog('[SUCCESS] Pipeline completed successfully!', 'success');
                     addLog('All dashboards have been updated. You can check the other tabs.', 'success');
                 }
