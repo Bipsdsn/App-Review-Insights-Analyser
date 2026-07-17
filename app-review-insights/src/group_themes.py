@@ -72,6 +72,9 @@ def discover_legend(df: pd.DataFrame, config: dict) -> list[dict]:
             config["max_themes"],
         )
         themes = themes[: config["max_themes"]]
+    
+    import gc
+    gc.collect()
     return themes
 
 

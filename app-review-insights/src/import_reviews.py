@@ -27,7 +27,7 @@ RSS_MAX_PAGES = 10
 # High-volume apps (PhonePe) have far more reviews in-window than a weekly
 # pulse needs. Cap the Play Store fetch at the newest N rows — a large,
 # recent sample that also keeps the LLM classification budget intact.
-MAX_PLAY_REVIEWS = 1500
+MAX_PLAY_REVIEWS = 400
 
 # Manual CSV best-effort column aliases (EC-IMP-10)
 COLUMN_ALIASES = {
@@ -246,6 +246,9 @@ def run(config: dict) -> Path:
         raise PipelineError("import: 0 reviews in window after filtering")
     if len(merged) < 20:  # EC-IMP-06
         log.warning("import: low volume week (%d reviews)", len(merged))
+
+    import gc
+    gc.collect()
 
     OUTPUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUTPUT_CSV.with_suffix(".csv.tmp")
