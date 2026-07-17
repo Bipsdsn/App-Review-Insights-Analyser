@@ -404,7 +404,7 @@
                 runBtn.className = "flex-[2] py-2.5 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-medium text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2";
             }
         } catch (e) {
-            addLog(`[ERROR] Status check failed: ${e.message}`, 'error');
+            // Silently retry on polling network errors to avoid polluting the Live Log
             setTimeout(pollStatus, 15000);
         }
     }
