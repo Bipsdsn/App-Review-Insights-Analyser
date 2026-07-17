@@ -163,7 +163,7 @@
 </a>
 </div>
 <div class="mt-auto">
-<button class="w-full py-3 rounded-lg border border-white/[0.1] text-primary hover:bg-white/[0.04] transition-all font-medium text-sm flex items-center justify-center gap-2">
+<button onclick="alert('Upgrade to Pro to unlock advanced AI features!')" class="w-full py-3 rounded-lg border border-white/[0.1] text-primary hover:bg-white/[0.04] transition-all font-medium text-sm flex items-center justify-center gap-2">
 <span class="material-symbols-outlined text-sm">bolt</span> Upgrade to Pro
             </button>
 </div>
@@ -180,7 +180,7 @@
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
 <input class="bg-surface-container-highest border-none rounded-full pl-9 pr-4 py-1.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 w-64" placeholder="Search logs..." type="text"/>
 </div>
-<button class="bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container px-4 py-1.5 rounded-full font-medium text-sm hover:opacity-90 transition-opacity flex items-center gap-2">
+<button onclick="alert('Template creation is available in the Pro version.')" class="bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container px-4 py-1.5 rounded-full font-medium text-sm hover:opacity-90 transition-opacity flex items-center gap-2">
 <span class="material-symbols-outlined text-sm">add</span> Create New
             </button>
 </div>
@@ -399,7 +399,9 @@
                     addLog('[SUCCESS] Pipeline completed successfully!', 'success');
                     addLog('All dashboards have been updated. You can check the other tabs.', 'success');
                 }
-                runBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Completed';
+                runBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">rocket_launch</span> Run Again';
+                runBtn.disabled = false;
+                runBtn.className = "flex-[2] py-2.5 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-medium text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2";
             }
         } catch (e) {
             addLog(`[ERROR] Status check failed: ${e.message}`, 'error');
