@@ -488,4 +488,44 @@
     </a>
 </nav>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('button, a').forEach(el => {
+        const text = el.textContent || '';
+        
+        if (text.includes('Export PDF')) {
+            el.onclick = (e) => { e.preventDefault(); window.print(); };
+        } 
+        else if (text.includes('Copy Markdown')) {
+            el.onclick = (e) => { 
+                e.preventDefault(); 
+                navigator.clipboard.writeText('# Weekly App Review Pulse\n\nTop 3 Themes...').then(() => alert('Markdown copied to clipboard!'));
+            };
+        }
+        else if (text.includes('Draft Email') && el.tagName === 'BUTTON') {
+            el.onclick = (e) => { e.preventDefault(); window.location.href = '../email_draft_preview/code.html'; };
+        }
+        else if (text.includes('Download .eml')) {
+            el.onclick = (e) => {
+                e.preventDefault();
+                const blob = new Blob(['To: executive.brief@domain.com\nSubject: Weekly App Review Pulse\n\nPlease find the report below.'], { type: 'message/rfc822' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'weekly_pulse.eml';
+                a.click();
+            };
+        }
+        else if (el.tagName === 'BUTTON' && !el.onclick && !el.id && text.trim() !== '') {
+            el.addEventListener('click', (e) => {
+                // Ignore if it's already handled above
+                if(text.includes('Export PDF') || text.includes('Copy Markdown') || text.includes('Draft Email') || text.includes('Download .eml')) return;
+                alert('This feature will be enabled in the final production release.');
+            });
+        }
+    });
+});
+</script>
+
 </body></html>
