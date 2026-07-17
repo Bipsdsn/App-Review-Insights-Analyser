@@ -399,28 +399,31 @@
 
         const stage3 = document.querySelector('.w-40');
         if(stage3) {
-            stage3.innerHTML = 
+            stage3.innerHTML = `
             <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-tertiary/30 flex items-center justify-center z-10 relative">
             <span class="material-symbols-outlined text-tertiary text-sm">check</span>
             </div>
             <div class="text-center">
             <p class="font-label-caps text-label-caps text-on-surface">Generate Note</p>
             <p class="text-[11px] text-on-surface-variant mt-1">Completed</p>
-            </div>;
+            </div>`;
             stage3.className = 'flex flex-col items-center gap-3 w-32';
         }
 
         const stage4 = document.querySelector('.opacity-50');
         if(stage4) {
-            stage4.innerHTML = 
-            <div class="w-10 h-10 rounded-full bg-surface-container-highest border border-tertiary/30 flex items-center justify-center z-10 relative">
-            <span class="material-symbols-outlined text-tertiary text-sm">check</span>
+            stage4.innerHTML = `
+            <div class="relative w-10 h-10 z-10 flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full bg-primary/20 pulse-ring"></div>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary-container to-secondary-container flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.5)]">
+            <span class="material-symbols-outlined text-on-primary-container text-sm animate-bounce">mail</span>
+            </div>
             </div>
             <div class="text-center">
-            <p class="font-label-caps text-label-caps text-on-surface">Draft Email</p>
-            <p class="text-[11px] text-on-surface-variant mt-1">Completed</p>
-            </div>;
-            stage4.className = 'flex flex-col items-center gap-3 w-32 transition-opacity duration-1000';
+            <p class="font-label-caps text-label-caps text-primary">Draft Email</p>
+            <p class="text-[11px] text-primary/80 mt-1 font-mono">Ready</p>
+            </div>`;
+            stage4.className = 'flex flex-col items-center gap-3 w-40 transition-all duration-1000';
         }
 
         const textElements = document.querySelectorAll('.text-sm.font-mono');
