@@ -124,9 +124,9 @@
         }
     </style>
 </head>
-<body class="text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<body class="text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
 <!-- SideNavBar -->
-<nav class="hidden lg:flex w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-white/[0.06] flex flex-col h-full p-gutter z-50">
+<nav class="hidden lg:flex w-[240px] h-screen fixed left-0 top-0 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-white/[0.06] flex flex-col h-full p-gutter z-[9999]">
 <div class="mb-8 mt-4 flex items-center gap-3 px-4">
 <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center">
 <span class="material-symbols-outlined text-on-primary-container text-sm" data-weight="fill">insights</span>
@@ -169,7 +169,7 @@
 </div>
 </nav>
 <!-- TopNavBar -->
-<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-240px)] h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-40 flex justify-between items-center px-gutter">
+<header class="fixed top-0 right-0 w-full lg:w-full lg:w-[calc(100%-240px)] h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-40 flex justify-between items-center px-gutter">
 <div class="flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps">
 <span class="hover:text-primary transition-colors cursor-pointer">PulseBoard</span>
 <span class="material-symbols-outlined text-[14px]">chevron_right</span>
@@ -186,7 +186,7 @@
 </div>
 </header>
 <!-- Main Canvas -->
-<main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen px-section-padding py-section-padding">
+<main class="w-full lg:w-full lg:w-[calc(100%-240px)] lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen px-section-padding py-section-padding">
 <div class="max-w-[1200px] mx-auto space-y-6">
 <!-- Hero Card: Pipeline Visualization -->
 <div class="glass-panel rounded-xl p-4 lg:p-card-padding relative overflow-hidden">
@@ -344,7 +344,7 @@
 </div>
 </main>
 <!-- Footer -->
-<footer class="fixed bottom-0 right-0 w-[calc(100%-240px)] h-12 bg-surface-container/50 dark:bg-surface-container/50 backdrop-blur-md border-t border-white/[0.04] flex justify-between items-center px-gutter z-40">
+<footer class="fixed bottom-0 right-0 w-full lg:w-[calc(100%-240px)] h-12 bg-surface-container/50 dark:bg-surface-container/50 backdrop-blur-md border-t border-white/[0.04] flex justify-between items-center px-gutter z-40">
 <div class="text-outline font-metric-sm text-metric-sm">
             PulseBoard Intelligence © 2026
         </div>
@@ -493,7 +493,7 @@
     });
 </script>
 
-<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px] bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-50">
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px]  bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-[9999] z-[99999] shadow-[0_-20px_40px_rgba(0,0,0,0.8)]">
     <a href="../dashboard_weekly_pulse/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
         <span class="material-symbols-outlined text-[24px]">dashboard</span>
     </a>

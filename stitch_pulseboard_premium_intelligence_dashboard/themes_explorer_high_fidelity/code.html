@@ -183,9 +183,9 @@
         }
     </style>
 </head>
-<body class="bg-[#0B0B10] text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-[#7C3AED]/30 selection:text-white">
+<body class="bg-[#0B0B10] text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-[#7C3AED]/30 selection:text-white overflow-x-hidden">
 <!-- SideNavBar -->
-<nav class="hidden lg:flex w-[240px] h-screen fixed left-0 top-0 bg-[#141420] border-r border-white/[0.06] flex flex-col p-gutter z-50">
+<nav class="hidden lg:flex w-[240px] h-screen fixed left-0 top-0 bg-[#141420] border-r border-white/[0.06] flex flex-col p-gutter z-[9999]">
 <div class="mb-8">
 <h1 class="font-display-lg text-display-lg font-bold bg-gradient-to-r from-[#7C3AED] to-[#A78BFA] bg-clip-text text-transparent">PulseBoard</h1>
 <p class="font-metric-sm text-metric-sm text-on-surface-variant mt-1">Premium Intelligence</p>
@@ -225,7 +225,7 @@
 </div>
 </nav>
 <!-- TopNavBar -->
-<header class="fixed top-0 right-0 w-full lg:w-[calc(100%-240px)] h-16 bg-[#0B0B10]/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-40 flex justify-between items-center px-gutter">
+<header class="fixed top-0 right-0 w-full lg:w-full lg:w-[calc(100%-240px)] h-16 bg-[#0B0B10]/80 backdrop-blur-3xl border-b border-white/[0.06] shadow-sm z-40 flex justify-between items-center px-gutter">
 <div class="flex items-center text-on-surface-variant font-body-md">
 <span class="hover:text-[#7C3AED] transition-colors cursor-pointer">Insights</span>
 <span class="mx-2 opacity-50">/</span>
@@ -236,7 +236,7 @@
 </div>
 </header>
 <!-- Main Content -->
-<main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen">
+<main class="w-full lg:w-full lg:w-[calc(100%-240px)] lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen">
 <div class="p-section-padding max-w-container-max mx-auto">
 <!-- Header Section -->
 <div class="flex flex-col lg:flex-row justify-between lg:items-end gap-4 mb-8">
@@ -340,7 +340,7 @@
 </div>
 </main>
 <!-- Footer -->
-<footer class="fixed bottom-0 right-0 w-[calc(100%-240px)] h-12 bg-[#0B0B10]/50 backdrop-blur-md border-t border-white/[0.04] flex justify-between items-center px-gutter z-40 transition-opacity duration-300">
+<footer class="fixed bottom-0 right-0 w-full lg:w-[calc(100%-240px)] h-12 bg-[#0B0B10]/50 backdrop-blur-md border-t border-white/[0.04] flex justify-between items-center px-gutter z-40 transition-opacity duration-300">
 <div class="flex gap-4 font-metric-sm text-metric-sm">
 <span class="text-outline">PulseBoard Intelligence © 2026</span>
 <span class="text-outline-variant">·</span>
@@ -353,7 +353,7 @@
 </div>
 </footer>
 
-<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px] bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-50">
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px]  bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-[9999] z-[99999] shadow-[0_-20px_40px_rgba(0,0,0,0.8)]">
     <a href="../dashboard_weekly_pulse/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
         <span class="material-symbols-outlined text-[24px]">dashboard</span>
     </a>

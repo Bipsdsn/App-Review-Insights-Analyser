@@ -196,9 +196,9 @@
         }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
 <!-- SideNavBar (from JSON) -->
-<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest text-primary dark:text-primary font-body-md text-body-md w-[240px] h-screen fixed left-0 top-0 border-r border-white/[0.06] flex flex-col h-full p-gutter z-50 hidden md:flex">
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest text-primary dark:text-primary font-body-md text-body-md w-[240px] h-screen fixed left-0 top-0 border-r border-white/[0.06] flex flex-col h-full p-gutter z-[9999] hidden md:flex">
 <div class="mb-8 px-4 mt-4">
 <h1 class="font-display-lg text-display-lg font-bold bg-gradient-to-r from-primary to-tertiary bg-clip-text text-transparent">PulseBoard</h1>
 <p class="font-label-caps text-label-caps text-outline mt-1">Premium Intelligence</p>
@@ -243,7 +243,7 @@
 </div>
 </nav>
 <!-- TopNavBar (from JSON) -->
-<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl text-primary dark:text-primary font-label-caps text-label-caps fixed top-0 right-0 w-[calc(100%-240px)] h-16 border-b border-white/[0.06] shadow-sm flex justify-between items-center px-gutter z-40 focus-within:ring-2 focus-within:ring-primary/40 hidden md:flex">
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-3xl text-primary dark:text-primary font-label-caps text-label-caps fixed top-0 right-0 w-full lg:w-[calc(100%-240px)] h-16 border-b border-white/[0.06] shadow-sm flex justify-between items-center px-gutter z-40 focus-within:ring-2 focus-within:ring-primary/40 hidden md:flex">
 <div class="flex items-center gap-2">
 <span class="text-on-surface-variant">Weekly Note</span>
 <span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
@@ -256,9 +256,9 @@
 </div>
 </header>
 <!-- Main Content Area -->
-<main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 flex h-screen overflow-hidden">
+<main class="w-full lg:w-full lg:w-[calc(100%-240px)] lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 flex h-screen overflow-hidden">
 <!-- Left Rail: Note History (300px) -->
-<aside class="w-[300px] border-r border-white/[0.06] bg-surface-container-lowest/50 flex flex-col relative">
+<aside class="hidden lg:flex w-[300px] border-r border-white/[0.06] bg-surface-container-lowest/50 flex flex-col relative">
 <div class="p-gutter border-b border-white/[0.06]">
 <h2 class="font-label-caps text-label-caps text-outline tracking-wider">NOTE HISTORY</h2>
 </div>
@@ -467,7 +467,7 @@
 </section>
 </main>
 <!-- Footer (from JSON) -->
-<footer class="bg-surface-container/50 dark:bg-surface-container/50 backdrop-blur-md text-secondary dark:text-secondary font-metric-sm text-metric-sm fixed bottom-0 right-0 w-[calc(100%-240px)] h-12 border-t border-white/[0.04] flex justify-between items-center px-gutter z-40 hidden md:flex">
+<footer class="bg-surface-container/50 dark:bg-surface-container/50 backdrop-blur-md text-secondary dark:text-secondary font-metric-sm text-metric-sm fixed bottom-0 right-0 w-full lg:w-[calc(100%-240px)] h-12 border-t border-white/[0.04] flex justify-between items-center px-gutter z-40 hidden md:flex">
 <div class="text-outline">PulseBoard Intelligence © 2026</div>
 <div class="flex gap-6">
 <a class="text-outline hover:text-on-surface transition-opacity duration-300" href="#">Metadata</a>
@@ -476,7 +476,7 @@
 </div>
 </footer>
 
-<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px] bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-50">
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px]  bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-[9999] z-[99999] shadow-[0_-20px_40px_rgba(0,0,0,0.8)]">
     <a href="../dashboard_weekly_pulse/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
         <span class="material-symbols-outlined text-[24px]">dashboard</span>
     </a>
