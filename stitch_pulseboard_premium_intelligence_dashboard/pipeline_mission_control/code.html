@@ -175,7 +175,7 @@
 <span class="material-symbols-outlined text-[14px]">chevron_right</span>
 <span class="text-primary font-bold border-b-2 border-primary pb-1">Run Pipeline</span>
 </div>
-<div class="flex items-center gap-4">
+<div class="flex flex-wrap items-center gap-4">
 <div class="relative focus-within:ring-2 focus-within:ring-primary/40 rounded-full">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
 <input class="bg-surface-container-highest border-none rounded-full pl-9 pr-4 py-1.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 w-64" placeholder="Search logs..." type="text"/>
@@ -187,7 +187,7 @@
 </header>
 <!-- Main Canvas -->
 <main class="w-full lg:w-full lg:w-[calc(100%-240px)] lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen px-section-padding py-section-padding">
-<div class="max-w-[1200px] mx-auto space-y-6">
+<div class="max-w-full lg:w-[1200px] mx-auto space-y-6">
 <!-- Hero Card: Pipeline Visualization -->
 <div class="glass-panel rounded-xl p-4 lg:p-card-padding relative overflow-hidden">
 <div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent pointer-events-none"></div>
@@ -377,7 +377,7 @@
         else if (type === 'warn') colorClass = 'text-[#FFC107]';
         
         liveLog.innerHTML += `
-            <div class="flex gap-4">
+            <div class="flex flex-wrap gap-4">
                 <span class="text-outline/50">${time}</span>
                 <span class="${colorClass}">${msg}</span>
             </div>
