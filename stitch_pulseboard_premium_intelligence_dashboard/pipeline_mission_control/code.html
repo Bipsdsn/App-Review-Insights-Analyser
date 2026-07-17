@@ -186,7 +186,7 @@
 </div>
 </header>
 <!-- Main Canvas -->
-<main class="lg:ml-[240px] pt-16 pb-12 min-h-screen px-section-padding py-section-padding">
+<main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen px-section-padding py-section-padding">
 <div class="max-w-[1200px] mx-auto space-y-6">
 <!-- Hero Card: Pipeline Visualization -->
 <div class="glass-panel rounded-xl p-card-padding relative overflow-hidden">
@@ -390,7 +390,7 @@
             const res = await fetch(`${apiUrl}/api/run-status`);
             const data = await res.json();
             if (data.running) {
-                addLog('[POLL] Pipeline is still running... (Classification takes ~10 mins)', 'warn');
+                
                 setTimeout(pollStatus, 15000);
             } else {
                 if (data.last_error) {
@@ -412,8 +412,8 @@
         runBtn.className = "flex-[2] py-2.5 rounded-lg bg-surface-container-highest text-on-surface-variant/50 text-sm font-medium cursor-not-allowed relative overflow-hidden flex justify-center items-center gap-2";
         runBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> Running...';
         liveLog.innerHTML = '';
-        addLog('Initializing Pipeline Run...', 'info');
-        addLog('Connecting to backend API on Render...', 'info');
+        addLog('Starting processing...', 'info');
+        
 
         try {
             const res = await fetch(`${apiUrl}/api/run`, {
@@ -424,7 +424,7 @@
             });
             
             if (res.ok) {
-                addLog('[SUCCESS] Run triggered. Pipeline started in the background.', 'success');
+                addLog('Analyzing reviews (this usually takes 1-2 minutes)...', 'success');
                 setTimeout(pollStatus, 5000);
             } else if (res.status === 409) {
                 addLog('[WARN] A run is already in progress.', 'warn');
@@ -438,4 +438,26 @@
         }
     });
 </script>
+
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-[72px] bg-surface-container-lowest border-t border-white/[0.06] flex items-center justify-around px-2 z-50">
+    <a href="../dashboard_weekly_pulse/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">dashboard</span>
+    </a>
+    <a href="../themes_explorer_high_fidelity/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">analytics</span>
+    </a>
+    <a href="../reviews_explorer/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">rate_review</span>
+    </a>
+    <a href="../weekly_note_report/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">event_note</span>
+    </a>
+    <a href="../email_draft_preview/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">mail</span>
+    </a>
+    <a href="../pipeline_mission_control/code.html" class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+    </a>
+</nav>
+
 </body></html>
