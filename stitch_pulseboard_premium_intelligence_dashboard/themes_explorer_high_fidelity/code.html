@@ -239,7 +239,7 @@
 <main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-16 pb-12 min-h-screen">
 <div class="p-section-padding max-w-container-max mx-auto">
 <!-- Header Section -->
-<div class="flex justify-between items-end mb-8">
+<div class="flex flex-col lg:flex-row justify-between lg:items-end gap-4 mb-8">
 <div>
 <h2 class="font-display-lg text-display-lg font-bold text-on-surface mb-2">Themes</h2>
 <p class="font-metric-sm text-metric-sm text-on-surface-variant">Max 5 — auto-discovered by LLM each week</p>
@@ -256,9 +256,9 @@
 </div>
 </div>
 <!-- Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:grid-cols-1 lg:grid-cols-3 gap-6">
 <!-- Featured Card (2x wide) -->
-<div class="lg:col-span-2 glass-panel p-card-padding featured-border featured-glow relative overflow-hidden group">
+<div class="lg:col-span-2 glass-panel p-4 lg:p-card-padding featured-border featured-glow relative overflow-hidden group">
 <div class="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/5 to-transparent opacity-50 pointer-events-none"></div>
 <div class="relative z-10 flex flex-col h-full">
 <div class="flex justify-between items-start mb-6">
@@ -287,7 +287,7 @@
 </div>
 </div>
 <!-- Standard Card 1 -->
-<div class="glass-panel p-card-padding hover:bg-white/[0.02] transition-colors flex flex-col h-full">
+<div class="glass-panel p-4 lg:p-card-padding hover:bg-white/[0.02] transition-colors flex flex-col h-full">
 <h3 class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface mb-3">App Performance &amp; Compatibility</h3>
 <div class="flex items-center gap-3 font-metric-sm text-metric-sm mb-4 font-tabular-nums">
 <span class="text-on-surface-variant">117</span>
@@ -301,7 +301,7 @@
 </div>
 </div>
 <!-- Standard Card 2 -->
-<div class="glass-panel p-card-padding hover:bg-white/[0.02] transition-colors flex flex-col h-full">
+<div class="glass-panel p-4 lg:p-card-padding hover:bg-white/[0.02] transition-colors flex flex-col h-full">
 <h3 class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface mb-3">Features &amp; Usability</h3>
 <div class="flex items-center gap-3 font-metric-sm text-metric-sm mb-4 font-tabular-nums">
 <span class="text-on-surface-variant">105</span>
@@ -315,7 +315,7 @@
 </div>
 </div>
 <!-- Standard Card 3 -->
-<div class="glass-panel p-card-padding hover:bg-white/[0.02] transition-colors flex flex-col h-full border-l-[3px] border-l-error">
+<div class="glass-panel p-4 lg:p-card-padding hover:bg-white/[0.02] transition-colors flex flex-col h-full border-l-[3px] border-l-error">
 <h3 class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface mb-3">Payment Failures</h3>
 <div class="flex flex-wrap items-center gap-3 font-metric-sm text-metric-sm font-tabular-nums">
 <span class="text-on-surface-variant">64</span>
@@ -326,7 +326,7 @@
 </div>
 </div>
 <!-- Standard Card 4 -->
-<div class="glass-panel p-card-padding hover:bg-white/[0.02] transition-colors relative overflow-hidden flex flex-col h-full">
+<div class="glass-panel p-4 lg:p-card-padding hover:bg-white/[0.02] transition-colors relative overflow-hidden flex flex-col h-full">
 <div class="absolute top-0 right-0 bg-[#7C3AED]/20 text-[#7C3AED] px-3 py-1 rounded-bl-lg font-label-caps text-[10px] tracking-wide uppercase">NEW</div>
 <h3 class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface mb-3 pr-10">Data Security &amp; Privacy</h3>
 <div class="flex items-center gap-3 font-metric-sm text-metric-sm font-tabular-nums">

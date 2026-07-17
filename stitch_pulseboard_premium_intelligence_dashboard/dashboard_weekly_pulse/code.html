@@ -274,11 +274,11 @@
 <span class="text-primary font-medium">Weekly Pulse</span>
 </div>
 <div class="flex items-center gap-4">
-<div class="relative group focus-within:ring-2 focus-within:ring-primary/40 rounded-lg">
+<div class="hidden lg:block relative group focus-within:ring-2 focus-within:ring-primary/40 rounded-lg">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
 <input class="bg-surface-container-high border border-white/[0.06] rounded-lg pl-9 pr-3 py-1.5 text-sm w-48 text-on-surface placeholder-on-surface-variant focus:outline-none focus:border-primary/50 transition-colors" placeholder="Search (⌘K)" type="text"/>
 </div>
-<div class="glass-panel px-3 py-1.5 rounded-lg flex items-center gap-2 border border-white/[0.06]">
+<div class="hidden md:flex glass-panel px-3 py-1.5 rounded-lg items-center gap-2 border border-white/[0.06]">
 <span class="material-symbols-outlined text-[16px] text-tertiary">calendar_today</span>
 <span class="font-metric-sm text-metric-sm text-xs text-on-surface">May 6 – Jul 16, 2026</span>
 </div>
@@ -289,11 +289,11 @@
 </div>
 </header>
 <!-- Main Content -->
-<main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-[88px] px-8 pb-24 min-h-screen">
+<main class="lg:ml-[240px] pb-[80px] lg:pb-0 pt-[88px] px-4 lg:px-8 pb-24 min-h-screen">
 <div class="max-w-container-max mx-auto space-y-6">
 <!-- Hero Row: Stat Cards -->
-<div class="grid grid-cols-4 gap-4">
-<div class="glass-panel p-card-padding rounded-xl glow-accent relative overflow-hidden group">
+<div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-panel p-4 lg:p-card-padding rounded-xl glow-accent relative overflow-hidden group">
 <div class="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 <div class="flex justify-between items-start mb-4">
 <span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL REVIEWS</span>
@@ -304,7 +304,7 @@
 </div>
 <div class="font-metric-xl text-metric-xl text-on-surface">2,100</div>
 </div>
-<div class="glass-panel p-card-padding rounded-xl relative overflow-hidden group">
+<div class="glass-panel p-4 lg:p-card-padding rounded-xl relative overflow-hidden group">
 <div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed-dim/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 <div class="flex justify-between items-start mb-4">
 <span class="font-label-caps text-label-caps text-on-surface-variant">AVG RATING</span>
@@ -321,7 +321,7 @@
 </div>
 </div>
 </div>
-<div class="glass-panel p-card-padding rounded-xl relative overflow-hidden group">
+<div class="glass-panel p-4 lg:p-card-padding rounded-xl relative overflow-hidden group">
 <div class="absolute inset-0 bg-gradient-to-br from-error/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 <div class="flex justify-between items-start mb-4">
 <span class="font-label-caps text-label-caps text-on-surface-variant">PROBLEM REVIEWS</span>
@@ -332,7 +332,7 @@
 </div>
 <div class="font-metric-xl text-metric-xl text-on-surface">207</div>
 </div>
-<div class="glass-panel p-card-padding rounded-xl relative overflow-hidden group">
+<div class="glass-panel p-4 lg:p-card-padding rounded-xl relative overflow-hidden group">
 <div class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 <div class="flex justify-between items-start mb-4">
 <span class="font-label-caps text-label-caps text-on-surface-variant">ACTIVE THEMES</span>
@@ -351,9 +351,9 @@
 </div>
 </div>
 <!-- Middle Row: Charts -->
-<div class="grid grid-cols-12 gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 <!-- Left: Bar Chart -->
-<div class="col-span-7 glass-panel p-card-padding rounded-xl flex flex-col">
+<div class="col-span-7 glass-panel p-4 lg:p-card-padding rounded-xl flex flex-col">
 <h2 class="font-metric-sm text-metric-sm text-on-surface mb-6">Theme Distribution</h2>
 <div class="flex-1 flex flex-col justify-center space-y-4">
 <div class="flex items-center gap-4 group">
@@ -394,7 +394,7 @@
 </div>
 </div>
 <!-- Right: Donut Gauge -->
-<div class="col-span-5 glass-panel p-card-padding rounded-xl flex flex-col items-center justify-center">
+<div class="col-span-5 glass-panel p-4 lg:p-card-padding rounded-xl flex flex-col items-center justify-center">
 <h2 class="font-metric-sm text-metric-sm text-on-surface mb-6 w-full text-left">Sentiment Health</h2>
 <div class="relative w-[160px] h-[160px] flex items-center justify-center mb-6">
 <!-- Simulated Donut using conic-gradient and masking for pure CSS approach -->
@@ -412,7 +412,7 @@
 </div>
 </div>
 <!-- Bottom Row: Featured Card -->
-<div class="gradient-border-pro p-card-padding">
+<div class="gradient-border-pro p-4 lg:p-card-padding">
 <div class="flex justify-between items-start">
 <div>
 <div class="flex items-center gap-3 mb-4">
